@@ -5,6 +5,7 @@ document.body.style.backgroundColor = backgroundColor;
 document.body.style.color = textColor;
 
 document.documentElement.style.setProperty("--color-secondary-text", textColor);
+document.documentElement.style.setProperty("--color-fg-default", textColor);
 document.documentElement.style.setProperty("--color-footer-bg", backgroundColor);
 document.documentElement.style.setProperty("--color-code-bg", backgroundColor);
 
@@ -48,10 +49,13 @@ headerList.forEach((element) => {
             element.style.backgroundColor = backgroundColor;
 });
 
+// Images
 var svgList = Array.prototype.slice.call(document.getElementsByTagName("svg"));
 
-var backgroundList = new Array(headerList);
+var imagesList = new Array(headerList);
 
-svgList.forEach((element) => {
-    element.style.fill = textColor;
+imagesList.forEach((element) => {
+    if ("style" in element)
+        if ("fill" in element.style)
+            element.style.fill = textColor;
 });
