@@ -16,6 +16,7 @@ var h3List = Array.prototype.slice.call(document.getElementsByTagName("h3"));
 var h4List = Array.prototype.slice.call(document.getElementsByTagName("h4"));
 var h5List = Array.prototype.slice.call(document.getElementsByTagName("h5"));
 var h6List = Array.prototype.slice.call(document.getElementsByTagName("h6"));
+
 var pList = Array.prototype.slice.call(document.getElementsByTagName("p"));
 
 var textList = new Array(h1List, h2List, h3List, h4List, h5List, h6List, pList);
@@ -41,9 +42,11 @@ buttonList.forEach((element) => {
 // Backgrounds
 var headerList = Array.prototype.slice.call(document.getElementsByTagName("header"));
 
-var backgroundList = new Array(headerList);
+document.getElementById("page").className = "";
 
-headerList.forEach((element) => {
+var backgroundList = new Array(headerList); 
+
+backgroundList.forEach((element) => {
     if ("style" in element)
         if ("backgroundColor" in element.style)
             element.style.backgroundColor = backgroundColor;
