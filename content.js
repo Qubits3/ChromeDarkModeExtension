@@ -1,5 +1,6 @@
 var backgroundColor = "#2D2D2D";
 var textColor = "#C7C7C7";
+var linkColor = "#8cbdff";
 
 document.body.style.backgroundColor = backgroundColor;
 document.body.style.color = textColor;
@@ -27,22 +28,25 @@ textList.forEach((element) => {
             element.style.color = textColor;
 });
 
+// Links
 var aList = Array.prototype.slice.call(document.getElementsByTagName("a"));
 
 aList.forEach((element) => {
-    element.style.color = textColor;
+    element.style.color = linkColor;
 });
 
+// Buttons
 var buttonList = Array.prototype.slice.call(document.getElementsByTagName("button"));
 
 buttonList.forEach((element) => {
-    element.style.color = textColor;
+    element.style.color = linkColor;
 });
 
 // Backgrounds
 var headerList = Array.prototype.slice.call(document.getElementsByTagName("header"));
 
-document.getElementById("page").className = "";
+if(!document.getElementById("page"))
+    document.getElementById("page").className = "";
 
 var backgroundList = new Array(headerList); 
 
