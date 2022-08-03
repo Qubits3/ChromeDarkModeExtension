@@ -4,9 +4,24 @@
     "version": "1.0.0",
     "content_scripts": [
         {
-            "matches": ["<all_urls>"],
-            "js": ["content.js"]
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "content.js"
+            ]
         }
     ],
-    "action": {}
+    "action": {
+        "default_icon": "images/dark_mode.png"
+    },
+    "commands": {
+        "_execute_action": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+F",
+                "mac": "MacCtrl+Shift+F"
+            },
+            "description": "Opens hello.html"
+        }
+    }
 }
