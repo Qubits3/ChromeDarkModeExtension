@@ -85,6 +85,22 @@ delay(5000).then(() => {
     });
 });
 
+// comment section
+var commentList = Array.prototype.slice.call(document.querySelectorAll("div[id^='comment-']"));
+commentList.forEach((element) => {
+    element.style.backgroundColor = backgroundColor;
+});
+
+var textareaList = Array.prototype.slice.call(document.querySelectorAll("textarea[id^='wc-textarea-']"));
+textareaList.forEach((element) => {
+    element.style.backgroundColor = backgroundColor;
+});
+
+var subList = Array.prototype.slice.call(document.getElementsByClassName("wpdiscuz-front-actions"));
+subList.forEach((element) => {
+    element.style.backgroundColor = backgroundColor;
+});
+
 // Backgrounds
 var headerList = Array.prototype.slice.call(document.getElementsByTagName("header"));
 
