@@ -79,11 +79,6 @@ delay(5000).then(() => {
         element.style.color = "#FFFFFF";
     });
 
-    var dataTextList = Array.prototype.slice.call(document.querySelectorAll("span[data-text]"));
-    dataTextList.forEach((element) => {
-        element.style.color = "#FFFFFF";
-    });
-
     var dataContentsList = Array.prototype.slice.call(document.querySelectorAll("div[data-contents]"));
     dataContentsList.forEach((element) => {
         element.style.color = textColor;
