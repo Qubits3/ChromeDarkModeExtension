@@ -2,6 +2,8 @@
     "name": "Dark Mode",
     "manifest_version": 3,
     "version": "1.0.0",
+
+    "description": "Darkens websites.",
     "content_scripts": [
         {
             "matches": [

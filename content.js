@@ -48,6 +48,43 @@ buttonList.forEach((element) => {
     element.style.color = linkColor;
 });
 
+// Paragraphs
+var pList = Array.prototype.slice.call(document.getElementsByTagName("p"));
+
+pList.forEach((element) => {
+    element.style.backgroundColor = backgroundColor;
+    element.style.color = textColor;
+});
+
+// learn.unity.com
+delay(5000).then(() => {
+    var contentWrap = Array.prototype.slice.call(document.getElementsByClassName("content-wrap_20RAlglX"));
+    contentWrap.forEach((element) => {
+        element.style.backgroundColor = "#000000";
+    });
+    
+    var stepList = Array.prototype.slice.call(document.querySelectorAll("div[class^='step_']"));
+    stepList.forEach((element) => {
+        element.style.backgroundColor = backgroundColor;
+    });
+
+    var bodyWrapList = Array.prototype.slice.call(document.querySelectorAll("div[class^='body-wrap_']"));
+    bodyWrapList.forEach((element) => {
+        element.style.backgroundColor = backgroundColor;
+    });
+
+    var titleWrapList = Array.prototype.slice.call(document.querySelectorAll("div[class^='title-wrap_']"));
+    titleWrapList.forEach((element) => {
+        element.style.backgroundColor = backgroundColor;
+        element.style.color = "#FFFFFF";
+    });
+
+    var dataContentsList = Array.prototype.slice.call(document.querySelectorAll("div[data-contents]"));
+    dataContentsList.forEach((element) => {
+        element.style.color = textColor;
+    });
+});
+
 // Backgrounds
 var headerList = Array.prototype.slice.call(document.getElementsByTagName("header"));
 
@@ -75,7 +112,6 @@ imagesList.forEach((element) => {
 });
 
 // Functions
-
 function colorLighter(hexValue) {
     var style = getComputedStyle(document.body);
 
@@ -129,4 +165,8 @@ function hexToLighterHSL(H) {
     l = 70;
 
     return "hsl(" + h + "," + s + "%," + l + "%)";
+}
+
+function delay(time) {
+    return new Promise(resolve => setTimeout(resolve, time));
 }
