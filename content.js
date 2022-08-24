@@ -2,6 +2,8 @@ var backgroundColor = "#2D2D2D";
 var textColor = "#C7C7C7";
 var linkColor = "#8cbdff";
 var codeColor = "#000000";
+var white = "#FFFFFF";
+var black = "#000000";
 
 // Root
 document.documentElement.style.setProperty("--color-secondary-text", textColor);
@@ -17,115 +19,44 @@ colorLighter('--color-code-attr');
 // Texts
 document.body.style.color = textColor;
 
-var h1List = Array.prototype.slice.call(document.getElementsByTagName("h1"));
-var h2List = Array.prototype.slice.call(document.getElementsByTagName("h2"));
-var h3List = Array.prototype.slice.call(document.getElementsByTagName("h3"));
-var h4List = Array.prototype.slice.call(document.getElementsByTagName("h4"));
-var h5List = Array.prototype.slice.call(document.getElementsByTagName("h5"));
-var h6List = Array.prototype.slice.call(document.getElementsByTagName("h6"));
-
-var pList = Array.prototype.slice.call(document.getElementsByTagName("p"));
-
-var textList = new Array(h1List, h2List, h3List, h4List, h5List, h6List, pList);
-
-textList.forEach((element) => {
-    if ("style" in element)
-        if ("color" in element.style)
-            element.style.color = textColor;
-});
+changeTextColor(Array.prototype.slice.call(document.getElementsByTagName("h1")));
+changeTextColor(Array.prototype.slice.call(document.getElementsByTagName("h2")));
+changeTextColor(Array.prototype.slice.call(document.getElementsByTagName("h3")));
+changeTextColor(Array.prototype.slice.call(document.getElementsByTagName("h4")));
+changeTextColor(Array.prototype.slice.call(document.getElementsByTagName("h5")));
+changeTextColor(Array.prototype.slice.call(document.getElementsByTagName("h6")));
+changeBackgroundColor(changeTextColor(Array.prototype.slice.call(document.getElementsByTagName("p"))));
 
 // Links
-var aList = Array.prototype.slice.call(document.getElementsByTagName("a"));
-
-aList.forEach((element) => {
-    element.style.color = linkColor;
-});
+changeTextColor(Array.prototype.slice.call(document.getElementsByTagName("a")), linkColor);
 
 // Buttons
-var buttonList = Array.prototype.slice.call(document.getElementsByTagName("button"));
-
-buttonList.forEach((element) => {
-    element.style.color = linkColor;
-});
-
-// Paragraphs
-var pList = Array.prototype.slice.call(document.getElementsByTagName("p"));
-
-pList.forEach((element) => {
-    element.style.backgroundColor = backgroundColor;
-    element.style.color = textColor;
-});
+changeTextColor(Array.prototype.slice.call(document.getElementsByTagName("button")), linkColor);
 
 // learn.unity.com
 delay(5000).then(() => {
-    var contentWrap = Array.prototype.slice.call(document.getElementsByClassName("content-wrap_20RAlglX"));
-    contentWrap.forEach((element) => {
-        element.style.backgroundColor = "#000000";
-    });
-    
-    var stepList = Array.prototype.slice.call(document.querySelectorAll("div[class^='step_']"));
-    stepList.forEach((element) => {
-        element.style.backgroundColor = backgroundColor;
-    });
-
-    var bodyWrapList = Array.prototype.slice.call(document.querySelectorAll("div[class^='body-wrap_']"));
-    bodyWrapList.forEach((element) => {
-        element.style.backgroundColor = backgroundColor;
-    });
-
-    var titleWrapList = Array.prototype.slice.call(document.querySelectorAll("div[class^='title-wrap_']"));
-    titleWrapList.forEach((element) => {
-        element.style.backgroundColor = backgroundColor;
-        element.style.color = "#FFFFFF";
-    });
-
-    var dataContentsList = Array.prototype.slice.call(document.querySelectorAll("div[data-contents]"));
-    dataContentsList.forEach((element) => {
-        element.style.color = textColor;
-    });
+    changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("content-wrap_20RAlglX")), black);
+    changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("div[class^='step_']")));
+    changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("div[class^='body-wrap_']")));
+    changeTextColor(changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("div[class^='title-wrap_']"))), white);
+    changeTextColor(Array.prototype.slice.call(document.querySelectorAll("div[data-contents]")));
 });
 
-// comment section
-var commentList = Array.prototype.slice.call(document.querySelectorAll("div[id^='comment-']"));
-commentList.forEach((element) => {
-    element.style.backgroundColor = backgroundColor;
-});
-
-var textareaList = Array.prototype.slice.call(document.querySelectorAll("textarea[id^='wc-textarea-']"));
-textareaList.forEach((element) => {
-    element.style.backgroundColor = backgroundColor;
-});
-
-var subList = Array.prototype.slice.call(document.getElementsByClassName("wpdiscuz-front-actions"));
-subList.forEach((element) => {
-    element.style.backgroundColor = backgroundColor;
-});
-
-// Backgrounds
-var headerList = Array.prototype.slice.call(document.getElementsByTagName("header"));
-
-document.body.style.backgroundColor = backgroundColor;
+// erkekadam.org
+changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("div[id^='comment-']")));
+changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("textarea[id^='wc-textarea-']")));
+changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("wpdiscuz-front-actions")));
+changeTextColor(Array.prototype.slice.call(document.getElementsByClassName("comment-author")));
 
 document.getElementById("page").className = "";
 
-var backgroundList = new Array(headerList);
+// Backgrounds
+changeBackgroundColor(Array.prototype.slice.call(document.getElementsByTagName("header")));
 
-backgroundList.forEach((element) => {
-    if ("style" in element)
-        if ("backgroundColor" in element.style)
-            element.style.backgroundColor = backgroundColor;
-});
+document.body.style.backgroundColor = backgroundColor;
 
 // Images
-var svgList = Array.prototype.slice.call(document.getElementsByTagName("svg"));
-
-var imagesList = new Array(headerList);
-
-imagesList.forEach((element) => {
-    if ("style" in element)
-        if ("fill" in element.style)
-            element.style.fill = textColor;
-});
+changeImageColor(Array.prototype.slice.call(document.getElementsByTagName("svg")));
 
 // Functions
 function colorLighter(hexValue) {
@@ -185,4 +116,32 @@ function hexToLighterHSL(H) {
 
 function delay(time) {
     return new Promise(resolve => setTimeout(resolve, time));
+}
+
+function changeTextColor(array, color = textColor) {
+    array.forEach(element => {
+        if ("style" in element)
+            if ("color" in element.style)
+                element.style.color = color;
+    });
+
+    return array;
+}
+
+function changeBackgroundColor(array, color = backgroundColor) {
+    array.forEach(element => {
+        if ("style" in element)
+            if ("backgroundColor" in element.style)
+                element.style.backgroundColor = color;
+    });
+
+    return array;
+}
+
+function changeImageColor(array) {
+    array.forEach((element) => {
+        if ("style" in element)
+            if ("fill" in element.style)
+                element.style.fill = textColor;
+    });
 }
