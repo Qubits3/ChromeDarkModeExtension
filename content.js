@@ -25,6 +25,7 @@ changeTextColor(Array.prototype.slice.call(document.getElementsByTagName("h3")))
 changeTextColor(Array.prototype.slice.call(document.getElementsByTagName("h4")));
 changeTextColor(Array.prototype.slice.call(document.getElementsByTagName("h5")));
 changeTextColor(Array.prototype.slice.call(document.getElementsByTagName("h6")));
+
 changeBackgroundColor(changeTextColor(Array.prototype.slice.call(document.getElementsByTagName("p"))));
 
 // Links
@@ -48,7 +49,8 @@ changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("text
 changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("wpdiscuz-front-actions")));
 changeTextColor(Array.prototype.slice.call(document.getElementsByClassName("comment-author")));
 
-document.getElementById("page").className = "";
+if(document.URL.includes("erkekadam.org"))
+    document.getElementById("page").className = "";
 
 // Backgrounds
 changeBackgroundColor(Array.prototype.slice.call(document.getElementsByTagName("header")));
