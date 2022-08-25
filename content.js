@@ -1,15 +1,12 @@
 var backgroundColor = "#2D2D2D";
 var textColor = "#C7C7C7";
 var linkColor = "#8cbdff";
-var codeColor = "#000000";
-var white = "#FFFFFF";
-var black = "#000000";
 
 // Root
-document.documentElement.style.setProperty("--color-secondary-text", textColor);
-document.documentElement.style.setProperty("--color-fg-default", textColor);
-document.documentElement.style.setProperty("--color-footer-bg", backgroundColor);
-document.documentElement.style.setProperty("--color-code-bg", codeColor);
+changeProperty("--color-secondary-text", textColor);
+changeProperty("--color-fg-default", textColor);
+changeProperty("--color-footer-bg", backgroundColor);
+changeProperty("--color-code-bg", 'black');
 
 colorLighter('--color-code-string');
 colorLighter('--color-text');
@@ -36,10 +33,10 @@ changeTextColor(Array.prototype.slice.call(document.getElementsByTagName("button
 
 // learn.unity.com
 delay(5000).then(() => {
-    changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("content-wrap_20RAlglX")), black);
+    changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("content-wrap_20RAlglX")), 'black');
     changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("div[class^='step_']")));
     changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("div[class^='body-wrap_']")));
-    changeTextColor(changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("div[class^='title-wrap_']"))), white);
+    changeTextColor(changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("div[class^='title-wrap_']"))), 'white');
     changeTextColor(Array.prototype.slice.call(document.querySelectorAll("div[data-contents]")));
 });
 
@@ -48,6 +45,13 @@ changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("div[
 changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("textarea[id^='wc-textarea-']")));
 changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("wpdiscuz-front-actions")));
 changeTextColor(Array.prototype.slice.call(document.getElementsByClassName("comment-author")));
+
+// developer.chrome.com
+changeTextColor(changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("aside aside--gotchas"))), 'palevioletred');
+changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("aside aside--note")));
+changeTextColor(changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("aside aside--warning"))), 'red');
+changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("aside aside--caution")));
+changeTextColor(changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("aside aside--success"))), 'limegreen');
 
 if(document.URL.includes("erkekadam.org"))
     document.getElementById("page").className = "";
@@ -146,4 +150,8 @@ function changeImageColor(array) {
             if ("fill" in element.style)
                 element.style.fill = textColor;
     });
+}
+
+function changeProperty(property, value){
+    document.documentElement.style.setProperty(property, value);
 }
