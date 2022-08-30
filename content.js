@@ -32,28 +32,66 @@ changeTextColor(Array.prototype.slice.call(document.getElementsByTagName("a")), 
 changeTextColor(Array.prototype.slice.call(document.getElementsByTagName("button")), linkColor);
 
 // learn.unity.com
-delay(5000).then(() => {
-    changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("content-wrap_20RAlglX")), 'black');
-    changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("div[class^='step_']")));
-    changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("div[class^='body-wrap_']")));
-    changeTextColor(changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("div[class^='title-wrap_']"))), 'white');
-    changeTextColor(Array.prototype.slice.call(document.querySelectorAll("div[data-contents]")));
-});
+if (document.URL.includes("learn.unity.com")) {
+    delay(5000).then(() => {
+        changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("content-wrap_20RAlglX")), 'black');
+        changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("div[class^='step_']")));
+        changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("div[class^='body-wrap_']")));
+        changeTextColor(changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("div[class^='title-wrap_']"))), 'white');
+        changeTextColor(Array.prototype.slice.call(document.querySelectorAll("div[data-contents]")));
+    });
+}
 
 // erkekadam.org
-changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("div[id^='comment-']")));
-changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("textarea[id^='wc-textarea-']")));
-changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("wpdiscuz-front-actions")));
-changeTextColor(Array.prototype.slice.call(document.getElementsByClassName("comment-author")));
+if (document.URL.includes("erkekadam.org")) {
+    changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("div[id^='comment-']")));
+    changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("textarea[id^='wc-textarea-']")));
+    changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("wpdiscuz-front-actions")));
+    changeTextColor(Array.prototype.slice.call(document.getElementsByClassName("comment-author")));
+}
 
 // developer.chrome.com
-changeTextColor(changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("aside aside--gotchas"))), 'palevioletred');
-changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("aside aside--note")));
-changeTextColor(changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("aside aside--warning"))), 'red');
-changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("aside aside--caution")));
-changeTextColor(changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("aside aside--success"))), 'limegreen');
+if (document.URL.includes("developer.chrome.com")) {
+    changeTextColor(changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("aside aside--gotchas"))), 'palevioletred');
+    changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("aside aside--note")));
+    changeTextColor(changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("aside aside--warning"))), 'red');
+    changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("aside aside--caution")));
+    changeTextColor(changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("aside aside--success"))), 'limegreen');
+}
 
-if(document.URL.includes("erkekadam.org"))
+// developer.android.com
+if (document.URL.includes("developer.android.com")) {
+    delay(1000).then(() => {
+        changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("devsite-sidebar-content")));
+        changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("devsite-article")));
+        changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("devsite-book-nav-bg")));
+        changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("devsite-collapsible-section")));
+        changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("devsite-book-nav-filter")));
+        changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("devsite-tabs-wrapper")));
+        changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("devsite-top-logo-row")));
+        changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("devsite-breadcrumb-list")));
+        changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("button button-primary")));
+        changeTextColor(Array.prototype.slice.call(document.getElementsByClassName("devsite-landing-row-item-description-content")));
+        changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("button gc-analytics-event android-fully-clickable-link")));
+
+        changeTextColor(changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("input"))), textColor);
+        changeTextColor(changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("button"))), textColor);
+
+        changeTextColor(changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("code"))), 'white');
+        changeTextColor(Array.prototype.slice.call(document.getElementsByTagName("a")), linkColor);
+
+        changeProperty("--devsite-background-0", backgroundColor);
+        changeProperty("--devsite-background-1", backgroundColor);
+        changeProperty("--devsite-background-2", backgroundColor);
+        changeProperty("--devsite-background-3", backgroundColor);
+        changeProperty("--devsite-background-4", backgroundColor);
+        changeProperty("--devsite-background-5", backgroundColor);
+
+        document.body.style.backgroundColor = backgroundColor;
+    })
+}
+
+if (document.URL.includes("erkekadam.org"))
     document.getElementById("page").className = "";
 
 // Backgrounds
@@ -152,6 +190,6 @@ function changeImageColor(array) {
     });
 }
 
-function changeProperty(property, value){
+function changeProperty(property, value) {
     document.documentElement.style.setProperty(property, value);
 }

@@ -2,18 +2,25 @@
     "name": "Dark Mode",
     "manifest_version": 3,
     "version": "1.0.0",
-
     "description": "Darkens websites.",
-    "content_scripts": [
-        {
-            "matches": [
-                "<all_urls>"
-            ],
-            "js": [
-                "content.js"
-            ]
-        }
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "tabs"
     ],
+    "host_permissions": [
+        "*://developer.android.com/*",
+        "*://developer.chrome.com/*",
+        "*://erkekadam.org/*",
+        "*://learn.unity.com/*"
+        
+    ],
+    "optional_host_permissions": [
+        "*://*/*"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
     "action": {
         "default_icon": "images/dark_mode.png"
     },
