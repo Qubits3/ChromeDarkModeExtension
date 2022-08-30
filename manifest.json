@@ -13,7 +13,6 @@
         "*://developer.chrome.com/*",
         "*://erkekadam.org/*",
         "*://learn.unity.com/*"
-        
     ],
     "optional_host_permissions": [
         "*://*/*"

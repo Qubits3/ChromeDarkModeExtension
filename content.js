@@ -71,14 +71,14 @@ if (document.URL.includes("developer.android.com")) {
         changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("devsite-top-logo-row")));
         changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("devsite-breadcrumb-list")));
         changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("button button-primary")));
-        changeTextColor(Array.prototype.slice.call(document.getElementsByClassName("devsite-landing-row-item-description-content")));
         changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("button gc-analytics-event android-fully-clickable-link")));
 
-        changeTextColor(changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("input"))), textColor);
-        changeTextColor(changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("button"))), textColor);
-
-        changeTextColor(changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("code"))), 'white');
+        changeTextColor(Array.prototype.slice.call(document.getElementsByClassName("devsite-landing-row-item-description-content")));
         changeTextColor(Array.prototype.slice.call(document.getElementsByTagName("a")), linkColor);
+
+        changeTextColor(changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("input"))));
+        changeTextColor(changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("button"))));
+        changeTextColor(changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("code"))), 'white');
 
         changeProperty("--devsite-background-0", backgroundColor);
         changeProperty("--devsite-background-1", backgroundColor);
@@ -86,6 +86,10 @@ if (document.URL.includes("developer.android.com")) {
         changeProperty("--devsite-background-3", backgroundColor);
         changeProperty("--devsite-background-4", backgroundColor);
         changeProperty("--devsite-background-5", backgroundColor);
+        changeProperty("--devsite-primary-text-color", linkColor);
+        changeProperty("--devsite-nav-title-color", linkColor);
+
+        document.getElementsByClassName("devsite-book-nav-blur")[0].remove();
 
         document.body.style.backgroundColor = backgroundColor;
     })
