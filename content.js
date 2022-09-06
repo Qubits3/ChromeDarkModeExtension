@@ -78,7 +78,11 @@ if (document.URL.includes("developer.android.com")) {
 
         changeTextColor(changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("input"))));
         changeTextColor(changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("button"))));
-        changeTextColor(changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("code"))), 'white');
+        changeTextColor(Array.prototype.slice.call(document.querySelectorAll("code")), 'white').forEach(element => {
+            if(!element.parentElement.className.includes('lang-kotlin')){
+                element.style.backgroundColor = backgroundColor;
+            }
+        });
 
         changeProperty("--devsite-background-0", backgroundColor);
         changeProperty("--devsite-background-1", backgroundColor);
