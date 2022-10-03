@@ -48,6 +48,9 @@ if (document.URL.includes("erkekadam.org")) {
     changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("textarea[id^='wc-textarea-']")));
     changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("wpdiscuz-front-actions")));
     changeTextColor(Array.prototype.slice.call(document.getElementsByClassName("comment-author")));
+
+    document.getElementById("page").className = "";
+
 }
 
 // developer.chrome.com
@@ -79,10 +82,35 @@ if (document.URL.includes("developer.android.com")) {
         changeTextColor(changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("input"))));
         changeTextColor(changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("button"))));
         changeTextColor(Array.prototype.slice.call(document.querySelectorAll("code")), 'white').forEach(element => {
-            if(!element.parentElement.className.includes('lang-kotlin')){
+            if (!element.parentElement.className.includes('lang-kotlin')) {
                 element.style.backgroundColor = backgroundColor;
             }
         });
+
+        // Fixes
+        Array.prototype.slice.call(document.getElementsByTagName("pre")).forEach((element) => {
+            Array.prototype.slice.call(element.getElementsByTagName("code")).forEach((element) => {
+                element.style = null
+            })
+        })
+
+        Array.prototype.slice.call(document.getElementsByTagName("a")).forEach((element) => {
+            Array.prototype.slice.call(element.getElementsByTagName("code")).forEach((element) => {
+                element.style.color = linkColor;
+            })
+        })
+
+        Array.prototype.slice.call(document.getElementsByClassName("special")).forEach((special) => {
+            Array.prototype.slice.call(special.getElementsByTagName("a")).forEach((element) => {
+                element.style = null
+            })
+
+            Array.prototype.slice.call(special.getElementsByTagName("code")).forEach((element) => {
+                element.style = null
+            })
+        })
+
+        changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("td")));
 
         changeProperty("--devsite-background-0", backgroundColor);
         changeProperty("--devsite-background-1", backgroundColor);
@@ -99,8 +127,6 @@ if (document.URL.includes("developer.android.com")) {
     })
 }
 
-if (document.URL.includes("erkekadam.org"))
-    document.getElementById("page").className = "";
 
 // Backgrounds
 changeBackgroundColor(Array.prototype.slice.call(document.getElementsByTagName("header")));
