@@ -110,6 +110,12 @@ if (document.URL.includes("developer.android.com")) {
             })
         })
 
+        Array.prototype.slice.call(document.getElementsByTagName("span")).forEach((element) => {
+            Array.prototype.slice.call(element.getElementsByTagName("code")).forEach((element) => {
+                element.style = null
+            })
+        })
+
         changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("td")));
 
         changeProperty("--devsite-background-0", backgroundColor);
