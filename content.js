@@ -77,6 +77,8 @@ if (document.URL.includes("developer.android.com")) {
         changeBackgroundColor(Array.prototype.slice.call(document.getElementsByClassName("button gc-analytics-event android-fully-clickable-link")));
 
         changeTextColor(Array.prototype.slice.call(document.getElementsByClassName("devsite-landing-row-item-description-content")));
+        changeTextColor(Array.prototype.slice.call(document.getElementsByClassName("devsite-nav-text")), linkColor);
+        // changeTextColor(Array.prototype.slice.call(document.getElementsByClassName("devsite-nav-title devsite-nav-title-no-path")), linkColor);
         changeTextColor(Array.prototype.slice.call(document.getElementsByTagName("a")), linkColor);
 
         changeTextColor(changeBackgroundColor(Array.prototype.slice.call(document.querySelectorAll("input"))));
